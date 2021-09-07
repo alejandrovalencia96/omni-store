@@ -1,0 +1,154 @@
+<div class="main">
+
+  <div class="main__menu">
+    <img (click)="openMenu(sidenav, menu)" #menu   src="../../assets/images/menu.svg">
+  </div>
+
+  <div class="main__logo">
+    <img src="../../assets/images/logo.svg">
+  </div>
+
+
+  <div id="mySidenav" class="sidenav" #sidenav>
+    <a href="#">Inicio</a>
+    <a class="active" href="#">Servicios</a>
+    <a href="#">Nuestro Equipo</a>
+    <a href="#">Portafolio</a>
+    <a href="#">Contácto</a>
+    <a href="#">Términos y condiciones</a>
+  </div>
+
+
+  <div class="container" [class.hide-tab]="hideTab">
+
+    <div class="tab-container">
+      <div class="tab-item" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'">
+        <div>Ingreso</div>
+      </div>
+      <div class="tab-item" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'">
+        <div>Registro</div>
+      </div>
+    </div>
+
+    <div class="tab-slider-container" [ngSwitch]="viewMode">
+
+      <div id="tab1" class="tab-slider-body" *ngSwitchCase="'tab1'">
+
+        <form #form_login="ngForm" (ngSubmit)="login(form_login)">
+
+        <div class="form-group">
+          <label>Email</label><br>
+          <input type="email" [class.input_validator]="form_login.submitted && form_login.controls['email'].errors" name="email" ngModel autocomplete="off" placeholder="ejemplo@email.com" required>
+          <span class="validator" *ngIf="form_login.submitted && form_login.controls['email'].errors">
+            <img src="../../assets/images/vector.svg">
+            Requerido
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label>Contraseña</label><br>
+          <input type="password" [class.input_validator]="form_login.submitted && form_login.controls['password'].errors" name="password" ngModel placeholder="********" required>
+          <span class="validator" *ngIf="form_login.submitted && form_login.controls['password'].errors">
+            <img src="../../assets/images/vector.svg">
+            Requerido
+          </span>
+        </div>
+
+        <div class="form-group center">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <span>Suscribirse al Newsletter</span>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit">Ingreso</button>
+        </div>
+
+        <div class="form-group forgot-password">
+          <span>Olvide Contraseña</span>
+        </div>
+
+      </form>
+
+      </div>
+
+      <div id="tab2" class="tab-slider-body" *ngSwitchCase="'tab2'">
+
+
+        <form #form_register="ngForm" (ngSubmit)="register(form_register)">
+
+          <div class="form-group">
+            <label>Nombre</label><br>
+            <input type="text" [class.input_validator]="form_register.submitted && form_register.controls['name'].errors" name="name" ngModel autocomplete="off" placeholder="" required>
+            <span class="validator" *ngIf="form_register.submitted && form_register.controls['name'].errors">
+              <img src="../../assets/images/vector.svg">
+              Requerido
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>Apellido</label><br>
+            <input type="text" [class.input_validator]="form_register.submitted && form_register.controls['lastname'].errors" name="lastname" ngModel placeholder="Pérez" required>
+            <span class="validator" *ngIf="form_register.submitted && form_register.controls['lastname'].errors">
+              <img src="../../assets/images/vector.svg">
+              Requerido
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label><br>
+            <input type="email" [class.input_validator]="form_register.submitted && form_register.controls['email'].errors" name="email" ngModel autocomplete="off" placeholder="ejemplo@email.com" required>
+            <span class="validator" *ngIf="form_register.submitted && form_register.controls['email'].errors">
+              <img src="../../assets/images/vector.svg">
+              Requerido
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>Contraseña</label><br>
+            <input type="password" [class.input_validator]="form_register.submitted && form_register.controls['password'].errors" name="password" ngModel placeholder="********" required>
+            <span class="validator" *ngIf="form_register.submitted && form_register.controls['password'].errors">
+              <img src="../../assets/images/vector.svg">
+              Requerido
+            </span>
+          </div>
+
+
+          <div class="form-group padding">
+            <button type="submit">Registro</button>
+          </div>
+
+
+        </form>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <div class="container info" [class.hide-tab]="!hideTab">
+
+    <div class="info_present">
+
+        <div class="text-info">
+          <span>SUCCESS</span>
+        </div>
+
+          <div class="circle-info">
+            <img src="../../assets/images/check.svg">
+          </div>
+    </div>
+
+  </div>
+
+
+  </div>
+
+

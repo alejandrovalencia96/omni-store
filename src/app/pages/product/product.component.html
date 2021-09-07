@@ -1,0 +1,149 @@
+<div class="main">
+<header>
+    <img src="../../../assets/images/logo_product.svg">
+
+    <ul>
+      <li><img src="../../../assets/images/search.svg"></li>
+      <li><img src="../../../assets/images/heart.svg"></li>
+      <li><img src="../../../assets/images/bag.svg">
+        <span class="badge">{{bag_products}}</span>
+      </li>
+      <li><img src="../../../assets/images/menu_product.svg"></li>
+    </ul>
+</header>
+
+
+<div class="container" *ngFor="let product of productList">
+
+  <div class="img_product">
+    <img  [src]="product.photo">
+    <span>Photo</span>
+</div>
+
+ <div class="title_product" >
+  {{product.category}} <br>
+  “The Sideswept Dhoti”
+    <div class="rating_product">
+      <img src="../../../assets/images/star.svg" *ngFor="let star of product.rating">
+      <span>4 de 5</span>
+    </div>
+
+    <div class="price_product">
+      {{product.price | currency}}
+    </div>
+
+ </div>
+
+
+ <div class="size_product">
+
+      <div class="size_text">
+        Tamaño
+      </div>
+
+      <div class="btn-group">
+        <button
+        *ngFor="let size of product.size;"
+        [disabled]="size.available == false"
+        [ngClass]="{'spent': size.available == false, 'exist' : size.available == true, 'choose': my_product.size == size.type }"
+         (click)="my_product.size = size.type">
+         {{size.type}}
+        </button>
+      </div>
+
+ </div>
+
+
+ <div class="kit_product">
+
+  <div class="kit_text">
+    Kit
+  </div>
+
+  <div class="btn-group kit">
+    <button
+    *ngFor="let kit of product.kit;"
+    [disabled]="kit.available == false"
+    [ngClass]="{'spent': kit.available == false, 'exist' : kit.available == true, 'choose': my_product.kit == kit.type }"
+     (click)="my_product.kit = kit.type">
+     {{kit.type}}
+    </button>
+  </div>
+
+</div>
+
+
+<div class="amount_product">
+
+  <div class="amount_text">
+    cantidad
+  </div>
+
+  <div class="amount_total">
+    <button class="plusminus" (click)="amount_minus()">-</button>
+    <input type="number" class="num" value="0" [(ngModel)]="my_product.cant" />
+    <button class="plusminus" (click)="amount_plus()">+</button>
+  </div>
+
+</div>
+
+
+<div class="add_cart" (click)="addCart()">
+  <button >añadir al carrito</button>
+</div>
+
+
+<div class="product_description">
+
+  <div class="title">Descripción</div>
+  <div class="description">In eu blandit metus. Phasellus vitae consequat augue. Cras auctor lacus a purus convallis...</div>
+  <a class="more">Leer más</a>
+
+</div>
+
+
+<div class="interest">
+
+  <div class="title">También te podría gustar</div>
+
+  <div class="scrolling-wrapper">
+
+
+    <div class="card">
+      <div class="card-image">
+        <img src="../../../assets/images/container_product.jpg">
+      </div>
+      <div class="title">Producto 1</div>
+      <div class="price">$130</div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <img src="../../../assets/images/container_product.jpg">
+      </div>
+      <div class="title">Producto 1</div>
+      <div class="price">$130</div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <img src="../../../assets/images/container_product.jpg">
+      </div>
+      <div class="title">Producto 1</div>
+      <div class="price">$130</div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+<footer>
+  © Copyright
+</footer>
+
+</div>
