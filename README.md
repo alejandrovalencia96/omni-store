@@ -10,6 +10,7 @@ Correr los siguentes comandos en la raiz del directorio:
 
 ## Credenciales para probar el login
 email: test@omni.pro
+
 password: 123456
 
 # Video del proyecto
